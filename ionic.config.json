@@ -1,0 +1,7 @@
+{
+  "name": "hilive03",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
