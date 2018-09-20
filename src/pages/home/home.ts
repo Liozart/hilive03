@@ -1,16 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AuthService } from '../../services/AuthService';
+import { NavParams } from 'ionic-angular';
 import {PromotionsPage} from "../promotions/promotions";
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
-  constructor(public navCtrl: NavController) { }
+  mode: string;
 
-  onGoToPromotionsPage() {
-    this.navCtrl.push(PromotionsPage);
+  constructor(public navCtrl: NavController,
+              private authService: AuthService,
+              private navParams: NavParams) { }
+
+  ngOnInit() {
+
   }
 }

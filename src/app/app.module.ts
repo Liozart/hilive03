@@ -8,6 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PromotionsPage } from "../pages/promotions/promotions";
 
+import { AuthService } from "../services/AuthService";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,7 +29,8 @@ import { PromotionsPage } from "../pages/promotions/promotions";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    [AuthService]
   ]
 })
 export class AppModule {}

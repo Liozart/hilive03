@@ -1,10 +1,9 @@
-$backcolor: #211C32;
-$connect-color: #d8d8d8;
-$signup-color: #55b0b5;
+$background-color: #211C32;
+$signup-color: #b56655;
 
 page-home {
   #background {
-    background-color: $backcolor;
+    background-color: $background-color;
   }
   #signupbtn {
     background-color: $signup-color;
