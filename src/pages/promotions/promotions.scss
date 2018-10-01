@@ -1,0 +1,45 @@
+
+page-promotions{
+
+  .promItem{
+    margin-top: 2%;
+  }
+  .promImage {
+    width: 25%;
+    height: 25%;
+    float: left;
+  }
+  .promButton{
+    font-family: Calibri;
+    font-style: italic;
+    float: left;
+  }
+  .promContent{
+    width: 65%;
+    float: right;
+    margin-left: 3px;
+  }
+
+  .promName{
+    font-size: 1.0em;
+    color: #222222;
+    padding-bottom: 3px;
+  }
+  .promPrice{
+    padding-top: 5px;
+    font-size: 0.9em;
+    color: #222222;
+  }
+  .promReduc{
+    background-color: $hiliveorangeLight;
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .promReducText{
+    color: white;
+    font-size: 1.3em;
+  }
+}

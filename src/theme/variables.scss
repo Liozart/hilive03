@@ -22,7 +22,15 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
+$hiliveorange:  #b56655;
+$hiliveviolet:  #211C32;
+$hilivewhite:   #d3d3d3;
+$hiliveorangeLight:   #fdc27c;
 
+$toggle-ios-background-color-on: $hiliveorange;
+$toggle-ios-border-color-off: $hiliveviolet;
+$toggle-ios-background-color-off: $hilivewhite;
+$toggle-ios-handle-background-color: $hilivewhite;
 
 
 // Named Color Variables
@@ -38,30 +46,27 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  orange:     #b56655,
+  violet:     #211C32,
+  orangeLight: #fdc27c
 );
 
 
 // App iOS Variables
-// --------------------------------------------------
-// iOS only Sass variables can go here
-
-
-
-
 // App Material Design Variables
-// --------------------------------------------------
-// Material Design only Sass variables can go here
-
-
-
-
 // App Windows Variables
-// --------------------------------------------------
-// Windows only Sass variables can go here
 
-
-
+.md,
+.ios,
+.wp {
+  page-promotions {
+    ion-header {
+    }
+    ion-thumbnail {
+    }
+  }
+}
 
 // App Theme
 // --------------------------------------------------

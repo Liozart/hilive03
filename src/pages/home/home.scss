@@ -1,12 +1,10 @@
-$background-color: #211C32;
-$signup-color: #b56655;
 
 page-home {
   #background {
-    background-color: $background-color;
+    background-color: $hiliveviolet;
   }
   #signupbtn {
-    background-color: $signup-color;
+    background-color: $hiliveorange;
   }
   #homelogo {
     display: block;
@@ -14,5 +12,8 @@ page-home {
     height: auto;
     margin-left: auto;
     margin-right: auto;
+  }
+  .no-scroll .scroll-content{
+    overflow: hidden;
   }
 }
