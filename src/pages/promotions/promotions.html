@@ -9,33 +9,15 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <ion-list>
-    <div *ngFor="let sale of sales">
-      <ion-item>
-        <div class="promItem">
-          <img src="assets/imgs/hilogo.jpg" class="promImage">
-
-          <div class="promContent">
-            <p class="promName">{{sale.name}}</p>
-            <p>{{sale.shop}}</p>
-            <p>{{sale.address}}</p>
-            <p class="promPrice">{{sale.finalprice}} au lieu de {{sale.baseprice}}</p>
-          </div>
-        </div>
-        <div class="promButton">
-        <button ion-button outline small color="dark" item-left-bottom>
-          <ion-icon name="md-arrow-round-forward"></ion-icon>
-          <span style="width: 3px;"></span>Let's go
-        </button>
-      </div>
-        <ion-thumbnail item-end class="promReduc">
-          <span class="promReducText">{{sale.discount}}</span>
-        </ion-thumbnail>
-      </ion-item>
-    </div>
-  </ion-list>
+<ion-content class="card-background-page">
+  <div>{{vardump}}salut</div>
+  <div *ngFor="let sale of sales">
+    <ion-card>
+      <img src="assets/imgs/hilogo.jpg"/>
+      <div class="card-title">{{sale.name}}</div>
+      <div class="card-subtitle">{{sale.shop}}</div>
+      <p class="saleAddress">{{sale.address}}</p>
+      <p class="salePrice">{{sale.finalprice}} au lieu de {{sale.baseprice}}</p>
+    </ion-card>
+  </div>
 </ion-content>
-<ion-footer>
-  {{vardump}}
-</ion-footer>

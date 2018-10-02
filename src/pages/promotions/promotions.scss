@@ -1,45 +1,42 @@
 
 page-promotions{
+  .card-background-page {
+    color: black;
 
-  .promItem{
-    margin-top: 2%;
-  }
-  .promImage {
-    width: 25%;
-    height: 25%;
-    float: left;
-  }
-  .promButton{
-    font-family: Calibri;
-    font-style: italic;
-    float: left;
-  }
-  .promContent{
-    width: 65%;
-    float: right;
-    margin-left: 3px;
+    ion-card {
+      position: relative;
+      text-align: center;
+      max-height: 160px;
+    }
+
+    .card-title {
+      position: absolute;
+      top: 25%;
+      font-size: 1.8em;
+      width: 100%;
+      font-weight: bold;
+    }
+
+    .card-subtitle {
+      font-size: 1.2em;
+      position: absolute;
+      top: 45%;
+      width: 100%;
+    }
+
   }
 
-  .promName{
-    font-size: 1.0em;
-    color: #222222;
-    padding-bottom: 3px;
+  .saleAddress {
+    position: absolute;
+    top: 58%;
+    font-size: 1.1em;
+    width: 100%;
   }
-  .promPrice{
-    padding-top: 5px;
-    font-size: 0.9em;
-    color: #222222;
-  }
-  .promReduc{
-    background-color: $hiliveorangeLight;
-    border-radius: 25px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .promReducText{
-    color: white;
-    font-size: 1.3em;
+  .salePrice{
+    position: absolute;
+    top: 80%;
+    font-size: 1.5em;
+    width: 100%;
+    font-weight: bold;
   }
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, App } from 'ionic-angular';
-import { AuthService } from '../../services/AuthService';
-import { NavParams } from 'ionic-angular';
+import {NavController, App} from 'ionic-angular';
 import {PromotionsPage} from "../promotions/promotions";
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { ToastController } from 'ionic-angular';
+import jsSHA from 'jssha';
+
 
 @Component({
   selector: 'page-home',
@@ -12,45 +13,67 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class HomePage implements OnInit{
 
   newUserToggled : boolean;
-  email : string;
-  password : string;
+  email : string = '';
+  password : string = '';
   errorMessage : string;
+  vardump: any;
 
-  constructor(public navCtrl: NavController,  private authService: AuthService, private app: App)
+  url_createUsr: string = 'http://localhost:3000/createUser';
+  url_connectUsr: string = 'http://localhost:3000/connectUser';
+
+  constructor(public navCtrl: NavController, private app: App, private http: HttpClient, public toastCtrl: ToastController)
   {
     //app._setDisableScroll(true);
   }
 
   ngOnInit() {
     this.newUserToggled = false;
-    /*this.authForm = new FormGroup({
-      email: new FormControl(['', [Validators.required, Validators.email]]),
-      password: new FormControl(['', Validators.required])
-    });*/
   }
 
   onSubmitForm() {
-    /*const email = this.authForm.get('email').value;
-    const password = this.authForm.get('password').value;*/
-    if (this.newUserToggled) {
-      this.authService.signUpUser(this.email, this.password).then(
-        () => {
-          this.navCtrl.setRoot(PromotionsPage);
-        },
-        (error) => {
-          this.errorMessage = error;
-        }
-      );
+    /* Check email validity */
+    var trig = this.email,
+      regex = new RegExp('[0-9a-zA-Z]*@[0-9a-zA-Z]*.[a-z]*'),
+      test = regex.test(trig);
+    if (test) {
+      /* Hash password */
+      let shaObj = new jsSHA("SHA-256", "TEXT");
+      shaObj.update(this.password);
+      let hashedPwd = shaObj.getHash("HEX");
+      /* Connect or create user */
+      if (this.newUserToggled) {
+        this.http.post(this.url_createUsr, {}, {
+          headers: new HttpHeaders({
+            email: this.email,
+            password: hashedPwd
+          })
+        }).subscribe(data => {
+          this.vardump = JSON.stringify(data);
+          this.presentToast(this.vardump.toLocaleString());
+        });
+      }
+      else {
+        this.http.post(this.url_connectUsr, {}, {
+          headers: new HttpHeaders({
+            email: this.email,
+            password: hashedPwd
+          })
+        }).subscribe(data => {
+          this.vardump = JSON.stringify(data);
+          this.presentToast(this.vardump.toLocaleString());
+        });
+      }
     } else {
-      this.authService.createUser(this.email, this.password).then(
-        () => {
-          this.navCtrl.setRoot(PromotionsPage);
-        },
-        (error) => {
-          this.errorMessage = error;
-        }
-      );
+      this.presentToast("Email invalide");
     }
+  }
+
+  presentToast(msg: string){
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000
+    });
+    toast.present();
   }
 
   changeForPromotions(){
