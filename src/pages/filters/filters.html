@@ -1,18 +1,39 @@
-<!--
-  Generated template for the FiltersPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
     <ion-title>filters</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Catégories
+    </ion-list-header>
+    <ion-item>
+      <ion-range min="1" max="5" step="1" snaps="true" [(ngModel)]="text">
+        <ion-label range-left class="small-text">10.-</ion-label>
+        <ion-label range-right class="small-text">Tout</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-list-header>
+      Prix maximum : {{filter_maxPrice}}.-
+    </ion-list-header>
+    <ion-item>
+      <ion-range min="1" max="5" step="1" snaps="true" [(ngModel)]="filter_maxPrice">
+        <ion-label range-left class="small-text">10.-</ion-label>
+        <ion-label range-right class="small-text">Tout</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-list-header>
+      Rayon maximum : {{filter_maxDistance}} kilomètres
+    </ion-list-header>
+    <ion-item>
+      <button ion-button round (click)="changeFilterDistance(1)">1 km</button>
+      <button ion-button round (click)="changeFilterDistance(5)">5 km</button>
+      <button ion-button round (click)="changeFilterDistance(10)">10 km</button>
+      <button ion-button round (click)="changeFilterDistance(25)">25 km</button>
+      <button ion-button round (click)="changeFilterDistance(50)">+50 km</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
 <ion-content padding>
-
 </ion-content>

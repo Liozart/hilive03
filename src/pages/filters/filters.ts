@@ -1,18 +1,24 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
 
-@IonicPage()
 @Component({
   selector: 'page-filters',
   templateUrl: 'filters.html',
 })
-export class FiltersPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+export class FiltersPage implements OnInit{
+
+  filter_category: string[];
+  filter_maxPrice: number;
+  filter_maxDistance: number;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+
+  ngOnInit(){
+    this.filter_maxDistance = 10;
+    this.filter_maxPrice = 50;
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FiltersPage');
+  changeFilterDistance(km: number){
+    this.filter_maxDistance = km;
   }
-
 }

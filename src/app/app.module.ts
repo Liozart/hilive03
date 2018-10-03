@@ -7,13 +7,15 @@ import { HttpClientModule} from "@angular/common/http";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PromotionsPage } from "../pages/promotions/promotions";
+import { FiltersPage } from "../pages/filters/filters";
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    PromotionsPage
+    PromotionsPage,
+    FiltersPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { PromotionsPage } from "../pages/promotions/promotions";
   entryComponents: [
     MyApp,
     HomePage,
-    PromotionsPage
+    PromotionsPage,
+    FiltersPage
   ],
   providers: [
     StatusBar,
