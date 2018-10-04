@@ -1,23 +1,23 @@
-<ion-header>
-  <ion-toolbar hideBackButton="true" color="violet">
-    <ion-title>
-      <span style="color: #f4f4f4;">Promotions</span></ion-title>
-    <ion-buttons end>
-    <button ion-button icon-only round color="orange" (click)="showFilters()">
-      <ion-icon name="search"></ion-icon>
-    </button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<ion-menu [content]="mycontent">
+  <ion-content>
+    <ion-list>
+      <p>some menu content, could be list items</p>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
 <ion-content class="card-background-page">
-  <div>{{vardump}}salut</div>
   <div *ngFor="let sale of sales">
-    <ion-card>
-      <img src="assets/imgs/hilogo.jpg"/>
-      <div class="card-title">{{sale.name}}</div>
-      <div class="card-subtitle">{{sale.shop}}</div>
-      <p class="saleAddress">{{sale.address}}</p>
-      <p class="salePrice">{{sale.finalprice}} au lieu de {{sale.baseprice}}</p>
-    </ion-card>
-  </div>
+  <ion-card class="saleCard">
+    <img src="assets/imgs/logo.png" class="saleImage"/>
+    <ion-card-content>
+      <ion-card-title class="saleTitle">{{sale.name}}</ion-card-title>
+      <h2>{{sale.shop}}</h2>
+      <p style="margin-top: 10px">{{sale.finalprice}} au lieu de {{sale.baseprice}}
+      <span style="padding-left: 10px"></span><ion-icon name="pricetag"></ion-icon> {{sale.discount}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+    </div>
 </ion-content>

@@ -1,42 +1,14 @@
 
 page-promotions{
-  .card-background-page {
-    color: black;
-
-    ion-card {
-      position: relative;
-      text-align: center;
-      max-height: 160px;
-    }
-
-    .card-title {
-      position: absolute;
-      top: 25%;
-      font-size: 1.8em;
-      width: 100%;
-      font-weight: bold;
-    }
-
-    .card-subtitle {
-      font-size: 1.2em;
-      position: absolute;
-      top: 45%;
-      width: 100%;
-    }
+  .saleTitle {
 
   }
-
-  .saleAddress {
-    position: absolute;
-    top: 58%;
-    font-size: 1.1em;
-    width: 100%;
+  .saleCard {
+    position: relative;
+    text-align: center;
   }
-  .salePrice{
-    position: absolute;
-    top: 80%;
-    font-size: 1.5em;
+  .saleImage {
     width: 100%;
-    font-weight: bold;
+    height: 300px;
   }
 }

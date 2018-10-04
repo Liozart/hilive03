@@ -11,7 +11,7 @@ import {FiltersPage} from "../filters/filters";
 export class PromotionsPage {
     private sales: any[] = [
     {
-      "name": "Godasses pas chères a a a a a",
+      "name": "Godasses pas chères a a a a aaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "shop": "Poorman's Manor",
       "address": "15 rue du slip",
       "baseprice": "30.-",
@@ -24,7 +24,7 @@ export class PromotionsPage {
         "address": "Boulevard de la saucisse",
         "baseprice": "1000.-",
         "finalprice": "2.-",
-        "discount": "mass%"
+        "discount": "-mass%"
       },
       {
         "name": "SUPERLONGSQUADNAME",
@@ -40,7 +40,7 @@ export class PromotionsPage {
         "address": "Boulevard de la saucisse",
         "baseprice": "1000.-",
         "finalprice": "2.-",
-        "discount": "87%"
+        "discount": "-87%"
       },
       {
         "name": "Autre promo",
@@ -48,7 +48,7 @@ export class PromotionsPage {
         "address": "Boulevard de la saucisse",
         "baseprice": "1000.-",
         "finalprice": "2.-",
-        "discount": "15%"
+        "discount": "-15%"
       },
       {
         "name": "Autre promo",
@@ -56,7 +56,7 @@ export class PromotionsPage {
         "address": "Boulevard de la saucisse",
         "baseprice": "1000.-",
         "finalprice": "2.-",
-        "discount": "15%"
+        "discount": "-15%"
       },
       {
         "name": "Autre promo",
@@ -64,7 +64,7 @@ export class PromotionsPage {
         "address": "Boulevard de la saucisse",
         "baseprice": "1000.-",
         "finalprice": "2.-",
-        "discount": "15%"
+        "discount": "-15%"
       },
       {
         "name": "Autre promo",
@@ -150,7 +150,7 @@ export class PromotionsPage {
 }
 
 /*
-OLD PROMOTIONS PAGE
+OLD PROMOTIONS PAGE V1
 </ion-content>
   <ion-list>
     <div *ngFor="let sale of sales">
@@ -219,5 +219,61 @@ OLD PROMOTIONS PAGE
   .promReducText{
     color: white;
     font-size: 1.3em;
+  }
+ */
+
+/*
+OLD PROMOTION PAGE V2
+<ion-content class="card-background-page">
+  <div>{{vardump}}salut</div>
+  <div *ngFor="let sale of sales">
+    <ion-card>
+      <img src="assets/imgs/hilogo.jpg"/>
+      <div class="card-title">{{sale.name}}</div>
+      <div class="card-subtitle">{{sale.shop}}</div>
+      <p class="saleAddress">{{sale.address}}</p>
+      <p class="salePrice">{{sale.finalprice}} au lieu de {{sale.baseprice}}</p>
+    </ion-card>
+  </div>
+</ion-content>
+
+.card-background-page {
+    color: black;
+
+    ion-card {
+      position: relative;
+      text-align: center;
+      max-height: 160px;
+    }
+
+    .card-title {
+      position: absolute;
+      top: 25%;
+      font-size: 1.8em;
+      width: 100%;
+      font-weight: bold;
+    }
+
+    .card-subtitle {
+      font-size: 1.2em;
+      position: absolute;
+      top: 45%;
+      width: 100%;
+    }
+
+  }
+
+  .saleAddress {
+    position: absolute;
+    top: 58%;
+    font-size: 1.1em;
+    width: 100%;
+  }
+  .salePrice{
+    position: absolute;
+    top: 80%;
+    font-size: 1.5em;
+    width: 100%;
+    font-weight: bold;
   }
  */

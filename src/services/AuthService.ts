@@ -1,46 +1,9 @@
-//import * as firebase from 'firebase';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class AuthService {
-  isAuth = false;
-
-  constructor() { }
-
-
-    /*firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.isAuth = true;
-      } else {
-        this.isAuth = false;
-      }
-    });
-  }*/
-
-    signUpUser(email: string)
-    {
-      /*return new Promise((resolve, reject) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(
-          (user) => {
-            resolve(user);
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      });*/
-    }
-
-    createUser(email: string, password: string)
-    {
-      /*return new Promise((resolve, reject) => {
-        firebase.auth().signInWithEmailAndPassword(email, password).then(
-          (user) => {
-            resolve(user);
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      });
-    }*/
-  }
+  public isLogged = false;
+  public filter_category: string[];
+  public filter_maxPrice: number;
+  public filter_maxDistance: number;
 }

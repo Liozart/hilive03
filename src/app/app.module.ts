@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PromotionsPage } from "../pages/promotions/promotions";
 import { FiltersPage } from "../pages/filters/filters";
+import {AuthService} from "../services/AuthService";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { FiltersPage } from "../pages/filters/filters";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthService
   ]
 })
 export class AppModule {}

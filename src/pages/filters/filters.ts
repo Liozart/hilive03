@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { globAll } from "@ionic/app-scripts/dist/util/glob-util";
 
 @Component({
   selector: 'page-filters',
@@ -8,17 +9,25 @@ import {NavController, NavParams} from 'ionic-angular';
 
 export class FiltersPage implements OnInit{
 
-  filter_category: string[];
-  filter_maxPrice: number;
-  filter_maxDistance: number;
-
   constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
   ngOnInit(){
-    this.filter_maxDistance = 10;
-    this.filter_maxPrice = 50;
   }
+
+  changeFilterCategory(cat: string, add: boolean) {
+    /*if (add)
+     this.global.filter_category.push(cat);
+    else
+      this.global.filter_category.push(cat);*/
+  }
+
   changeFilterDistance(km: number){
-    this.filter_maxDistance = km;
+    //this.global.filter_maxDistance = km;
+  }
+
+  arrayRemove(arr, value) {
+    return arr.filter(function(ele){
+      return ele != value;
+    });
   }
 }
