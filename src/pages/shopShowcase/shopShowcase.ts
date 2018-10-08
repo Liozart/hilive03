@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {PromotionsPage} from "../promotions/promotions";
+import { SalesPage } from "../sales/sales";
 import {GlobalService} from "../../services/GlobalService";
 
 @Component({

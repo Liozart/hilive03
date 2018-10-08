@@ -1,17 +1,20 @@
 import { Component, ViewChild } from '@angular/core';
-import {NavController, Platform} from 'ionic-angular';
+import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
-import {PromotionsPage} from "../pages/promotions/promotions";
-import {FiltersPage} from "../pages/filters/filters";
-import {ShopShowcase} from "../pages/shopShowcase/shopShowcase";
+import { SalesPage } from "../pages/sales/sales";
+import { FiltersPage } from "../pages/filters/filters";
+import { ShopShowcase } from "../pages/shopShowcase/shopShowcase";
+import {MapPage} from "../pages/map/map";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = PromotionsPage;
+  @ViewChild(Nav) nav: Nav;
+  pages: Array<{title: string, component: any}>;
+  rootPage:any = SalesPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -20,19 +23,13 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-
+    this.pages = [
+      { title: 'Promotions', component: SalesPage },
+      { title: 'Carte', component: MapPage},
+      { title: 'Déconnexion', component: HomePage }
+    ];
   }
   openPage(page) {
-    switch (page) {
-      case "Promotions":
-        this.rootPage = PromotionsPage;
-        break;
-      case "Filters":
-        this.rootPage = FiltersPage;
-        break;
-      case "Home":
-        this.rootPage = FiltersPage;
-        break;
-    }
+    this.nav.setRoot(page.component);
   }
 }

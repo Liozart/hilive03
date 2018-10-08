@@ -6,14 +6,8 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <button ion-item (click)="openPage(Promotions)">
-        Promotions
-      </button>
-      <button ion-item (click)="openPage(Filters)">
-        Filtres
-      </button>
-      <button ion-item (click)="openPage(Home)">
-        Déconnexion
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
       </button>
     </ion-list>
   </ion-content>

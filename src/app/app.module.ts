@@ -6,19 +6,21 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule} from "@angular/common/http";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { PromotionsPage } from "../pages/promotions/promotions";
+import { SalesPage } from "../pages/sales/sales";
 import { FiltersPage } from "../pages/filters/filters";
 import {GlobalService} from "../services/GlobalService";
 import {ShopShowcase} from "../pages/shopShowcase/shopShowcase";
+import {MapPage} from "../pages/map/map";
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    PromotionsPage,
+    SalesPage,
     FiltersPage,
-    ShopShowcase
+    ShopShowcase,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -29,9 +31,10 @@ import {ShopShowcase} from "../pages/shopShowcase/shopShowcase";
   entryComponents: [
     MyApp,
     HomePage,
-    PromotionsPage,
+    SalesPage,
     FiltersPage,
-    ShopShowcase
+    ShopShowcase,
+    MapPage
   ],
   providers: [
     StatusBar,

@@ -7,10 +7,10 @@ import {ShopShowcase} from "../shopShowcase/shopShowcase";
 import {GlobalService} from "../../services/GlobalService";
 
 @Component({
-  selector: 'page-promotions',
-  templateUrl: 'promotions.html'
+  selector: 'page-sales',
+  templateUrl: 'sales.html'
 })
-export class PromotionsPage {
+export class SalesPage {
 
   res_shops: any;
   res_sales: any;

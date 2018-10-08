@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController, App} from 'ionic-angular';
-import {PromotionsPage} from "../promotions/promotions";
+import {SalesPage} from "../sales/sales";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ToastController } from 'ionic-angular';
 import jsSHA from 'jssha';
@@ -70,7 +70,7 @@ export class HomePage implements OnInit{
             this.presentToast(JSON.stringify(data));
           else {
             this.global.token = JSON.stringify(data);
-            this.navCtrl.setRoot(PromotionsPage);
+            this.navCtrl.setRoot(SalesPage);
           }
         });
       }
