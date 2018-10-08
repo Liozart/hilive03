@@ -70,6 +70,7 @@ export class HomePage implements OnInit{
             this.presentToast(JSON.stringify(data));
           else {
             this.global.token = JSON.stringify(data);
+            this.global.isLogged = true;
             this.navCtrl.setRoot(SalesPage);
           }
         });
