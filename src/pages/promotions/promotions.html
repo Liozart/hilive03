@@ -1,15 +1,30 @@
-<ion-menu [content]="mycontent">
-  <ion-content>
-    <ion-list>
-      <p>some menu content, could be list items</p>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-<ion-nav #mycontent [root]="rootPage"></ion-nav>
-
+<ion-header>
+  <ion-navbar hideBackButton="true" color="violet">
+    <ion-title>
+      <span style="color: #f4f4f4;">Promotions</span>
+    </ion-title>
+    <button ion-button icon-only round color="orange" menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only round color="orange" (click)="showFiltersPage()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 <ion-content class="card-background-page">
+  <div *ngFor="let shop of res_shops">
+    <ion-card class="saleCard" (click)="showShopPage(shop.id)">
+      <img src="assets/imgs/logo.png" class="saleImage"/>
+      <ion-card-content>
+        <ion-card-title class="saleTitle">{{shop.name}}</ion-card-title>
+        <h2>{{shop.address}}</h2>
+      </ion-card-content>
+    </ion-card>
+  </div>
   <div *ngFor="let sale of sales">
-  <ion-card class="saleCard">
+  <ion-card class="saleCard" (click)="showShopPage(sale.shopid)">
     <img src="assets/imgs/logo.png" class="saleImage"/>
     <ion-card-content>
       <ion-card-title class="saleTitle">{{sale.name}}</ion-card-title>

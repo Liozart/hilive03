@@ -1,6 +1,8 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Filtres</ion-title>
+  <ion-navbar color="violet">
+    <ion-title>
+      <span style="color: #f4f4f4;">Filtres</span>
+    </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
@@ -9,22 +11,27 @@
       Catégories
     </ion-list-header>
     <ion-item>
-      <ion-range min="1" max="5" step="1" snaps="true" [(ngModel)]="text">
-        <ion-label range-left class="small-text">10.-</ion-label>
-        <ion-label range-right class="small-text">Tout</ion-label>
-      </ion-range>
+      <ion-label>Catégories</ion-label>
+      <ion-select [(ngModel)]="gaming" multiple="true">
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+        <ion-option value="ps">PlayStation</ion-option>
+        <ion-option value="genesis">Sega Genesis</ion-option>
+        <ion-option value="saturn">Sega Saturn</ion-option>
+        <ion-option value="snes">SNES</ion-option>
+      </ion-select>
     </ion-item>
     <ion-list-header>
-      Prix maximum : {{filter_maxPrice}}.-
+      Prix maximum : {{range_priceNumber}}.-
     </ion-list-header>
     <ion-item>
-      <ion-range min="1" max="5" step="1" snaps="true" [(ngModel)]="filter_maxPrice">
+      <ion-range min="1" max="5" step="1" snaps="true" ng-bind="range_priceNumber">
         <ion-label range-left class="small-text">10.-</ion-label>
         <ion-label range-right class="small-text">Tout</ion-label>
       </ion-range>
     </ion-item>
     <ion-list-header>
-      Rayon maximum : {{filter_maxDistance}} kilomètres
+      Rayon maximum : {{filterMaxDistance}} kilomètres
     </ion-list-header>
     <ion-item>
       <button ion-button round (click)="changeFilterDistance(1)">1 km</button>
@@ -36,6 +43,4 @@
     <ion-list-header>
     </ion-list-header>
   </ion-list>
-</ion-content>
-<ion-content padding>
 </ion-content>

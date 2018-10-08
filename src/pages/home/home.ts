@@ -4,6 +4,7 @@ import {PromotionsPage} from "../promotions/promotions";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ToastController } from 'ionic-angular';
 import jsSHA from 'jssha';
+import {GlobalService} from "../../services/GlobalService";
 
 
 @Component({
@@ -19,10 +20,10 @@ export class HomePage implements OnInit{
   vardump: any;
   token: string;
 
-  url_createUsr: string = 'http://localhost:3000/createUser';
-  url_connectUsr: string = 'http://localhost:3000/connectUser';
-
-  constructor(public navCtrl: NavController, private app: App, private http: HttpClient, public toastCtrl: ToastController)
+  constructor(public navCtrl: NavController,
+              private app: App, private http: HttpClient,
+              public toastCtrl: ToastController,
+              public global: GlobalService)
   {
     //app._setDisableScroll(true);
   }
@@ -44,7 +45,7 @@ export class HomePage implements OnInit{
       /* Connect or create user */
       /* Create */
       if (this.newUserToggled) {
-        this.http.post(this.url_createUsr, {}, {
+        this.http.post(this.global.url_createUser, {}, {
           headers: new HttpHeaders({
             email: this.email,
             password: hashedPwd
@@ -53,14 +54,13 @@ export class HomePage implements OnInit{
           if (JSON.stringify(data).includes("erreur"))
             this.presentToast(JSON.stringify(data));
           else {
-            this.token = JSON.stringify(data);
             this.presentToast("Compte crée");
           }
         });
       }
       /* Connect */
       else {
-        this.http.post(this.url_connectUsr, {}, {
+        this.http.post(this.global.url_connectUser, {}, {
           headers: new HttpHeaders({
             email: this.email,
             password: hashedPwd
@@ -69,7 +69,7 @@ export class HomePage implements OnInit{
           if (JSON.stringify(data).includes("erreur"))
             this.presentToast(JSON.stringify(data));
           else {
-            this.token = JSON.stringify(data);
+            this.global.token = JSON.stringify(data);
             this.navCtrl.setRoot(PromotionsPage);
           }
         });

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title ng-bind="shopId"></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="cards-bg">
+  <ion-card>
+    <img src="assets/imgs/hilogo.jpg" class="shopImage"/>
+    <ion-row no-padding>
+      <ion-col text-left>
+        <button ion-button clear small color="danger" icon-start>
+          {{shopName}}
+        </button>
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='share-alt'></ion-icon>
+          Share
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <div *ngFor="let sale of sales">
+      <ion-row>
+        <ion-col>
+        <ion-card class="grid-full">
+          <img src="assets/imgs/hilogo.jpg" class="saleImage"/>
+          <ion-card-content>
+            <p class="saleTitle">{{sale.name}}</p>
+            <p class="salePrice">{{sale.finalprice}} au lieu de {{sale.baseprice}}
+              <br/><ion-icon name="pricetag"></ion-icon> {{sale.discount}}
+            </p>
+          </ion-card-content>
+        </ion-card>
+        </ion-col>
+        <ion-col>
+        <ion-card class="card2">
+          <img src="assets/imgs/logo.png" class="saleImage"/>
+          <ion-card-content>
+            <p class="saleTitle">{{sale.name}}</p>
+            <p class="salePrice">{{sale.finalprice}} au lieu de {{sale.baseprice}}
+              <br/><ion-icon name="pricetag"></ion-icon> {{sale.discount}}
+            </p>
+          </ion-card-content>
+        </ion-card>
+        </ion-col>
+      </ion-row>
+  </div>
+</ion-content>

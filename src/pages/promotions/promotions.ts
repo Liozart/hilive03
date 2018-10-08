@@ -3,150 +3,162 @@ import { NavController } from 'ionic-angular';
 import {HomePage} from "../home/home";
 import { HttpClient } from "@angular/common/http";
 import {FiltersPage} from "../filters/filters";
+import {ShopShowcase} from "../shopShowcase/shopShowcase";
+import {GlobalService} from "../../services/GlobalService";
 
 @Component({
   selector: 'page-promotions',
   templateUrl: 'promotions.html'
 })
 export class PromotionsPage {
-    private sales: any[] = [
+
+  res_shops: any;
+  res_sales: any;
+
+    constructor(public navCtrl: NavController,
+                private http: HttpClient,
+                private global: GlobalService) { }
+
+  ngOnInit() {
+    this.http.get(this.global.url_getShops, {}).subscribe(data => {
+      this.res_shops = data;
+    });
+    this.http.get(this.global.url_getSales, {}).subscribe(data => {
+        this.res_sales = data;
+      });
+  }
+
+  showFiltersPage(){
+      this.navCtrl.push(FiltersPage);
+  }
+
+  showShopPage(shopId: string){
+      this.navCtrl.push(ShopShowcase, {shopid: shopId});
+  }
+
+  private sales: any[] = [
     {
       "name": "Godasses pas chères a a a a aaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "shop": "Poorman's Manor",
+      "shopid": "1",
       "address": "15 rue du slip",
       "baseprice": "30.-",
       "finalprice": "25.-",
       "discount": "-15%"
     },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "-mass%"
-      },
-      {
-        "name": "SUPERLONGSQUADNAME",
-        "shop": "SUPERLONGDISTRIBNAME",
-        "address": "Super long nom de rue de la mort",
-        "baseprice": "34555876.-",
-        "finalprice": "232432.-",
-        "discount": "-15000.-"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "-87%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "-15%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "-15%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "-15%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "15%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "15%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "15%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "15%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "15%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "15%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "15%"
-      },
-      {
-        "name": "Autre promo",
-        "shop": "Magasin",
-        "address": "Boulevard de la saucisse",
-        "baseprice": "1000.-",
-        "finalprice": "2.-",
-        "discount": "15%"
-      }
+    {
+      "name": "Autre promo",
+      "shopid": "2",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "-mass%"
+    },
+    {
+      "name": "SUPERLONGSQUADNAME",
+      "shopid": "3",
+      "address": "Super long nom de rue de la mort",
+      "baseprice": "34555876.-",
+      "finalprice": "232432.-",
+      "discount": "-15000.-"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "-87%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "-15%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "-15%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "-15%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "15%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "15%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "15%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "15%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "15%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "15%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "15%"
+    },
+    {
+      "name": "Autre promo",
+      "shop": "Magasin",
+      "address": "Boulevard de la saucisse",
+      "baseprice": "1000.-",
+      "finalprice": "2.-",
+      "discount": "15%"
+    }
   ];
 
-  vardump: any;
-
-
-    constructor(public navCtrl: NavController,
-                private http: HttpClient) { }
-
-  ngOnInit() {
-    this.http.get('http://localhost:3000/getSales', {}).subscribe(data => {
-        this.vardump = JSON.stringify(data);
-      });
-  }
-
-  showFilters(){
-      this.navCtrl.push(FiltersPage);
-  }
 }
 
 /*

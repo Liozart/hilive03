@@ -8,7 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PromotionsPage } from "../pages/promotions/promotions";
 import { FiltersPage } from "../pages/filters/filters";
-import {AuthService} from "../services/AuthService";
+import {GlobalService} from "../services/GlobalService";
+import {ShopShowcase} from "../pages/shopShowcase/shopShowcase";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {AuthService} from "../services/AuthService";
     MyApp,
     HomePage,
     PromotionsPage,
-    FiltersPage
+    FiltersPage,
+    ShopShowcase
   ],
   imports: [
     BrowserModule,
@@ -28,13 +30,14 @@ import {AuthService} from "../services/AuthService";
     MyApp,
     HomePage,
     PromotionsPage,
-    FiltersPage
+    FiltersPage,
+    ShopShowcase
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService
+    GlobalService
   ]
 })
 export class AppModule {}

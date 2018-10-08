@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import {NavController, Platform} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import {PromotionsPage} from "../pages/promotions/promotions";
 import {FiltersPage} from "../pages/filters/filters";
+import {ShopShowcase} from "../pages/shopShowcase/shopShowcase";
 
 @Component({
   templateUrl: 'app.html'
@@ -19,5 +20,19 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+  }
+  openPage(page) {
+    switch (page) {
+      case "Promotions":
+        this.rootPage = PromotionsPage;
+        break;
+      case "Filters":
+        this.rootPage = FiltersPage;
+        break;
+      case "Home":
+        this.rootPage = FiltersPage;
+        break;
+    }
   }
 }
