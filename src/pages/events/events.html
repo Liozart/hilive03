@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="violet">
+    <ion-title>
+      <span style="color: #f4f4f4;">Évenements</span>
+    </ion-title>
+    <button ion-button icon-only round color="orange" menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only round color="orange" (click)="showFiltersPage()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="card-background-page">
+  {{vardump2}}
+  {{vardump}}
+  <div *ngFor="let event of res_events">
+    <ion-card class="saleCard" (click)="showShopPage(shop.id)">
+      <img src="assets/imgs/logo.png" class="saleImage"/>
+      <ion-card-content>
+        <ion-card-title class="saleTitle">{{shop.name}}</ion-card-title>
+        <h2>{{shop.address}}</h2>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

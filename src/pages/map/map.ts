@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams} from 'ionic-angular';
+import {App, NavController, NavParams, ToastController} from 'ionic-angular';
 import { GlobalService } from "../../services/GlobalService";
-import { globAll } from "@ionic/app-scripts/dist/util/glob-util";
 import * as mapboxgl from 'mapbox-gl';
 
 
@@ -12,24 +11,39 @@ import * as mapboxgl from 'mapbox-gl';
 
 export class MapPage implements OnInit {
 
-  mapToken: string;
   map: mapboxgl.Map;
+  shops_longlat = [
+    [6.155065, 46.202324],
+    [6.157065, 46.205324],
+    [6.150065, 46.200324],
+    [6.152065, 46.207324]];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-              public global: GlobalService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, app: App,
+              public global: GlobalService, private toastCtrl: ToastController) {
+    app._setDisableScroll(true);
   }
 
   ngOnInit() {
-    this.mapToken = this.global.map_token;
-    mapboxgl.accessToken = this.mapToken;
+    //this.map = this.global.map;
+    mapboxgl.accessToken = this.global.map_token;
     this.map = new mapboxgl.Map({
       style: 'mapbox://styles/mapbox/dark-v9',
-      center: [-74.0066, 40.7135],
-      zoom: 16,
-      pitch: 80,
-      minZoom: 7.5, //restrict map zoom - buildings not visible beyond 13
+      center: [6.156065, 46.207324],
+      zoom: 14,
+      minZoom: 8,
       maxZoom: 17,
       container: 'map'
     });
+    for (let i of this.shops_longlat) {
+      var marker = new mapboxgl.Marker().setLngLat(i).addTo(this.map);
+    }
+  }
+
+  presentToast(msg: string){
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000
+    });
+    toast.present();
   }
 }
