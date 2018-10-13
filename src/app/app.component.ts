@@ -16,7 +16,7 @@ import {EventsPage} from "../pages/events/events";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages: Array<{title: string, component: any}>;
-  rootPage:any = MapPage;
+  rootPage:any = SalesPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
               public global: GlobalService) {

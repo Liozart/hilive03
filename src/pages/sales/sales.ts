@@ -22,6 +22,7 @@ export class SalesPage {
   ngOnInit() {
     this.http.get(this.global.url_getShops, {}).subscribe(data => {
       this.res_shops = data;
+      this.global.storage_shops = data;
     });
     this.http.get(this.global.url_getSales, {}).subscribe(data => {
         this.res_sales = data;

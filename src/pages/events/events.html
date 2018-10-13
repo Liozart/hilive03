@@ -14,14 +14,15 @@
   </ion-navbar>
 </ion-header>
 <ion-content class="card-background-page">
-  {{vardump2}}
   {{vardump}}
   <div *ngFor="let event of res_events">
-    <ion-card class="saleCard" (click)="showShopPage(shop.id)">
-      <img src="assets/imgs/logo.png" class="saleImage"/>
+    <ion-card>
       <ion-card-content>
-        <ion-card-title class="saleTitle">{{shop.name}}</ion-card-title>
-        <h2>{{shop.address}}</h2>
+        <ion-card-title class="eventTitle">
+          {{event.title}}
+        </ion-card-title>
+        <div [innerHTML]="event.description">
+        </div>
       </ion-card-content>
     </ion-card>
   </div>

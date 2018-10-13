@@ -12,6 +12,8 @@ import * as mapboxgl from 'mapbox-gl';
 export class MapPage implements OnInit {
 
   map: mapboxgl.Map;
+
+  shops: any;
   shops_longlat = [
     [6.155065, 46.202324],
     [6.157065, 46.205324],
@@ -24,6 +26,7 @@ export class MapPage implements OnInit {
   }
 
   ngOnInit() {
+    this.shops = this.global.storage_shops;
     //this.map = this.global.map;
     mapboxgl.accessToken = this.global.map_token;
     this.map = new mapboxgl.Map({
@@ -34,8 +37,14 @@ export class MapPage implements OnInit {
       maxZoom: 17,
       container: 'map'
     });
-    for (let i of this.shops_longlat) {
-      var marker = new mapboxgl.Marker().setLngLat(i).addTo(this.map);
+    for (let shop of this.shops) {
+      let co = [shop.longitude, shop.latitude];
+      let popup = new new mapboxgl.Popup({offset: 25});
+      popup.setText(shop.name);
+      var marker = new mapboxgl.Marker()
+        .setLngLat(co)
+        .setPopup(popup)
+        .addTo(this.map);
     }
   }
 

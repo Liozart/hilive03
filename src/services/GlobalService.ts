@@ -21,6 +21,8 @@ export class GlobalService {
   public map_token: string = "pk.eyJ1IjoibGlvemFydCIsImEiOiJjajl5NXJvbWI0dWhtMnBtdmJxeWlkNzBzIn0.gJ4P4FFmThRRNk-SsG6oIQ";
   public map: mapboxgl.Map;
 
+  public storage_shops: any;
+
   initMap(){
     mapboxgl.accessToken = this.map_token;
     this.map = new mapboxgl.Map({
