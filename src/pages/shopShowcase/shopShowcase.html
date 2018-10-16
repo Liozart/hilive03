@@ -22,7 +22,7 @@
       </ion-col>
     </ion-row>
   </ion-card>
-  <div *ngFor="let sale of sales">
+  <div *ngFor="let sale of sales" (click)="showOnMap()">
       <ion-row>
         <ion-col>
         <ion-card class="grid-full">

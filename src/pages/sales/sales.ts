@@ -5,6 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import {FiltersPage} from "../filters/filters";
 import {ShopShowcase} from "../shopShowcase/shopShowcase";
 import {GlobalService} from "../../services/GlobalService";
+import {MapPage} from "../map/map";
 
 @Component({
   selector: 'page-sales',
@@ -14,10 +15,13 @@ export class SalesPage {
 
   res_shops: any;
   res_sales: any;
+  tab: number;
 
     constructor(public navCtrl: NavController,
                 private http: HttpClient,
-                private global: GlobalService) { }
+                private global: GlobalService) {
+      this.tab = 0;
+    }
 
   ngOnInit() {
     this.http.get(this.global.url_getShops, {}).subscribe(data => {
@@ -29,12 +33,27 @@ export class SalesPage {
       });
   }
 
-  showFiltersPage(){
-      this.navCtrl.push(FiltersPage);
+  swipeEvent(e) {
+    if (e.direction == 2) {
+      this.tab = 1;
+    }
+    else {
+      if (e.direction == 4) {
+        this.tab = 0;
+      }
+    }
   }
 
   showShopPage(shopId: string){
       this.navCtrl.push(ShopShowcase, {shopid: shopId});
+  }
+
+  showFiltersPage(){
+    this.navCtrl.push(FiltersPage);
+  }
+
+  showOnMap(shopName: string) {
+    this.navCtrl.push(MapPage, {shopname: shopName});
   }
 
   private sales: any[] = [

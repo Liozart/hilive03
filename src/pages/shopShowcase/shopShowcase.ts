@@ -3,6 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { SalesPage } from "../sales/sales";
 import {GlobalService} from "../../services/GlobalService";
+import {MapPage} from "../map/map";
 
 @Component({
   selector: 'page-shopShowcase',
@@ -15,6 +16,7 @@ export class ShopShowcase implements OnInit{
   shopSales: any;
 
   constructor(public navParams: NavParams,
+              public navCtrl: NavController,
               private http: HttpClient,
               public global: GlobalService) { }
 
@@ -28,8 +30,12 @@ export class ShopShowcase implements OnInit{
     }).subscribe(data => {
       this.shopSales = data;
     });
-
   }
+
+  showOnMap() {
+    this.navCtrl.setRoot(MapPage, {shopid: this.shopId})
+  }
+
   private sales: any[] = [
     {
       "name": "Godasses",
