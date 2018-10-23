@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ToastController } from 'ionic-angular';
 import jsSHA from 'jssha';
 import {GlobalService} from "../../services/GlobalService";
+import {ShopsPage} from "../shops/shops";
 
 
 @Component({
@@ -23,8 +24,7 @@ export class HomePage implements OnInit{
   constructor(public navCtrl: NavController,
               private app: App, private http: HttpClient,
               public toastCtrl: ToastController,
-              public global: GlobalService)
-  {
+              public global: GlobalService) {
     //app._setDisableScroll(true);
   }
 
@@ -71,7 +71,8 @@ export class HomePage implements OnInit{
           else {
             this.global.token = JSON.stringify(data);
             this.global.isLogged = true;
-            this.navCtrl.setRoot(SalesPage);
+            this.navCtrl.push(ShopsPage);
+            this.navCtrl.setRoot(ShopsPage);
           }
         });
       }

@@ -6,21 +6,20 @@ import {FiltersPage} from "../filters/filters";
 import {ShopShowcase} from "../shopShowcase/shopShowcase";
 import {GlobalService} from "../../services/GlobalService";
 import {MapPage} from "../map/map";
+import {ShopsPage} from "../shops/shops";
 
 @Component({
   selector: 'page-sales',
   templateUrl: 'sales.html'
 })
-export class SalesPage {
+export class SalesPage implements OnInit{
 
   res_shops: any;
   res_sales: any;
-  tab: number;
 
     constructor(public navCtrl: NavController,
                 private http: HttpClient,
                 private global: GlobalService) {
-      this.tab = 0;
     }
 
   ngOnInit() {
@@ -34,18 +33,14 @@ export class SalesPage {
   }
 
   swipeEvent(e) {
-    if (e.direction == 2) {
-      this.tab = 1;
-    }
-    else {
-      if (e.direction == 4) {
-        this.tab = 0;
-      }
+    if (e.direction == 2 || e.direction == 4) {
+      this.showShopsPage();
     }
   }
 
-  showShopPage(shopId: string){
-      this.navCtrl.push(ShopShowcase, {shopid: shopId});
+  showShopsPage(){
+    this.navCtrl.push(ShopsPage);
+    this.navCtrl.setRoot(ShopsPage);
   }
 
   showFiltersPage(){
@@ -53,7 +48,7 @@ export class SalesPage {
   }
 
   showOnMap(shopName: string) {
-    this.navCtrl.push(MapPage, {shopname: shopName});
+    this.navCtrl.setRoot(MapPage, {shopname: shopName});
   }
 
   private sales: any[] = [

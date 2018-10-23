@@ -22,17 +22,6 @@ export class GlobalService {
   public map: mapboxgl.Map;
 
   public storage_shops: any;
+  public storage_sales: any;
 
-  initMap(){
-    mapboxgl.accessToken = this.map_token;
-    this.map = new mapboxgl.Map({
-      style: 'mapbox://styles/mapbox/dark-v9',
-      center: [6.156065, 46.207324],
-      zoom: 14,
-      pitch: 40,
-      minZoom: 8, //restrict map zoom - buildings not visible beyond 13
-      maxZoom: 17.5,
-      container: 'map'
-    });
-  }
 }

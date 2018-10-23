@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar hideBackButton="true" color="violet">
+    <ion-title>
+      <span style="color: #f4f4f4;">Magasins</span>
+    </ion-title>
+    <button ion-button icon-only round color="orange" menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only round color="orange" (click)="showFiltersPage()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="card-background-page">
+  <div class="pagesDots">
+    <ion-row justify-content-center>
+      <ion-col>
+        <ion-icon name="home" color="violet"></ion-icon>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="pricetags" color="gray" (click)="showSalesPage()"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </div>
+    <div *ngFor="let shop of res_shops" (swipe)="swipeEvent($event)">
+      <ion-card class="shopCard" (click)="showShopPage(shop.id)">
+        <img src="assets/imgs/logo.png" class="shopImage"/>
+        <ion-card-content>
+          <ion-card-title class="saleTitle">{{shop.name}}</ion-card-title>
+          <h2>{{shop.address}}</h2>
+        </ion-card-content>
+      </ion-card>
+    </div>
+</ion-content>

@@ -45,7 +45,7 @@ export class MapPage implements OnInit {
       }
     }*/
 
-    //this.map = this.global.map;
+    /* Init map */
     mapboxgl.accessToken = this.global.map_token;
     this.map = new mapboxgl.Map({
       style: 'mapbox://styles/mapbox/dark-v9',
@@ -55,6 +55,8 @@ export class MapPage implements OnInit {
       maxZoom: 17,
       container: 'map'
     });
+
+    /* Add shops markers */
     for (let shop of this.shops) {
       let co = [shop.longitude, shop.latitude];
       let popup = new mapboxgl.Popup({offset: 25});

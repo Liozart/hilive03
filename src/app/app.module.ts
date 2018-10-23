@@ -12,6 +12,8 @@ import {GlobalService} from "../services/GlobalService";
 import {ShopShowcase} from "../pages/shopShowcase/shopShowcase";
 import {MapPage} from "../pages/map/map";
 import {EventsPage} from "../pages/events/events";
+import {ShopsPage} from "../pages/shops/shops";
+import {ProfilePage} from "../pages/profile/profile";
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import {EventsPage} from "../pages/events/events";
     FiltersPage,
     ShopShowcase,
     MapPage,
-    EventsPage
+    EventsPage,
+    ShopsPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,9 @@ import {EventsPage} from "../pages/events/events";
     FiltersPage,
     ShopShowcase,
     MapPage,
-    EventsPage
+    EventsPage,
+    ShopsPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
