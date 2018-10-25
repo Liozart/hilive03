@@ -22,10 +22,12 @@ $app-direction: ltr;
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
-$hiliveorange:  #b56655;
-$hiliveviolet:  #211C32;
-$hilivewhite:   #d3d3d3;
+$hiliveorange:        #b56655;
+$hiliveviolet:        #211C32;
+$hilivewhite:         #d3d3d3;
 $hiliveorangeLight:   #fdc27c;
+$backGround:          #383838;
+$foreGround:          #dcdcdc;
 
 $toggle-ios-background-color-on: $hiliveorange;
 $toggle-ios-border-color-off: $hiliveviolet;
@@ -50,7 +52,9 @@ $colors: (
   orange:     #b56655,
   violet:     #211C32,
   orangeLight:#fdc27c,
-  gray:       #9b9b9b
+  gray:       #9b9b9b,
+  backGround: #868685,
+  foreGround: #dcdcdc
 );
 
 
@@ -61,12 +65,7 @@ $colors: (
 .md,
 .ios,
 .wp {
-  page-sales {
-    ion-header {
-    }
-    ion-thumbnail {
-    }
-  }
+
 }
 
 // App Theme

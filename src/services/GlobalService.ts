@@ -24,4 +24,8 @@ export class GlobalService {
   public storage_shops: any;
   public storage_sales: any;
 
+  public profile_name: string;
+  public profile_ageDate: Date;
+  public profile_imageName: string;
+
 }

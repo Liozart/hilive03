@@ -11,10 +11,10 @@
       <ion-input type="password" placeholder="Mot de passe" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button block id="signupbtn" (click)="onSubmitForm()">
-    <div *ngIf="newUserToggled===false">Connexion</div>
-    <div *ngIf="newUserToggled===true">Inscription</div>
-  </button>
+    <button ion-button block class="signupbtn" (click)="onSubmitForm()">
+      <div *ngIf="newUserToggled===false">Connexion</div>
+      <div *ngIf="newUserToggled===true">Inscription</div>
+    </button>
   <button ion-button block margin-top="10px">Connexion avec Facebook/Google</button>
   <ion-item style="background-color: #211C32;">
     <ion-label style="color: #d3d3d3">Nouvel utilisateur ?</ion-label>
@@ -23,6 +23,3 @@
   </ion-item>
   </form>
 </ion-content>
-<ion-footer>
-  {{vardump}}
-</ion-footer>

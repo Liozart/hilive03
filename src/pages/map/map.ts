@@ -22,7 +22,7 @@ export class MapPage implements OnInit {
     [6.152065, 46.207324]];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, app: App,
-              public global: GlobalService, private toastCtrl: ToastController) {
+              public global: GlobalService, public geolocation: Geolocation) {
     app._setDisableScroll(true);
   }
 
@@ -66,13 +66,17 @@ export class MapPage implements OnInit {
         .setPopup(popup)
         .addTo(this.map);
     }
-  }
 
-  presentToast(msg: string){
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 3000
+    /* Insert user position */
+    let watch = this.geolocation.watchPosition();
+    watch.subscribe((data) => {
+      // data can be a set of coordinates, or an error (if an error occurred).
+      // data.coords.latitude
+      // data.coords.longitude
+      let co = [data.coords.longitude, data.coords.latitude];
+      var marker = new mapboxgl.Marker()
+        .setLngLat(co)
+        .addTo(this.map);
     });
-    toast.present();
   }
 }

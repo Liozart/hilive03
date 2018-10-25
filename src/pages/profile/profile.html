@@ -3,11 +3,23 @@
     <ion-title>
       <span style="color: #f4f4f4;">Compte</span>
     </ion-title>
-    <button ion-button icon-only round color="orange" menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
   </ion-navbar>
 </ion-header>
-<ion-content>
-  Salut
+<ion-content class="content">
+  <ion-list>
+    <ion-item text-center>
+      <img src="assets/imgs/hilogo.jpg" class="profileImage"/>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Votre nom</ion-label>
+      <ion-input ng-model="this.global.profile_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Votre nom</ion-label>
+      <ion-input ng-model="this.global.profile_name"></ion-input>
+   </ion-item>
+  </ion-list>
+  <div text-center>
+    <button ion-button round color="orange">Valider</button>
+  </div>
 </ion-content>

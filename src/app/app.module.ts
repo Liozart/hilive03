@@ -14,6 +14,10 @@ import {MapPage} from "../pages/map/map";
 import {EventsPage} from "../pages/events/events";
 import {ShopsPage} from "../pages/shops/shops";
 import {ProfilePage} from "../pages/profile/profile";
+import {DatePicker} from "@ionic-native/date-picker";
+import {FilePath} from "@ionic-native/file-path";
+import { Geolocation } from '@ionic-native/geolocation';
+import { Camera } from '@ionic-native/camera';
 
 
 @NgModule({
@@ -49,7 +53,11 @@ import {ProfilePage} from "../pages/profile/profile";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    GlobalService
+    GlobalService,
+    DatePicker,
+    FilePath,
+    Geolocation,
+    Camera
   ]
 })
 export class AppModule {}
