@@ -18,6 +18,7 @@ import {DatePicker} from "@ionic-native/date-picker";
 import {FilePath} from "@ionic-native/file-path";
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
+import {File} from "@ionic-native/file";
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { Camera } from '@ionic-native/camera';
     DatePicker,
     FilePath,
     Geolocation,
-    Camera
+    Camera,
+    File
   ]
 })
 export class AppModule {}

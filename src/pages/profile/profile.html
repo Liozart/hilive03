@@ -3,6 +3,9 @@
     <ion-title>
       <span style="color: #f4f4f4;">Compte</span>
     </ion-title>
+    <button ion-button icon-only round color="orange" menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
 <ion-content class="content">
@@ -12,11 +15,11 @@
     </ion-item>
     <ion-item>
       <ion-label color="primary">Votre nom</ion-label>
-      <ion-input ng-model="this.global.profile_name"></ion-input>
+      <ion-input ng-model="this.res_name">{{this.res_name}}</ion-input>
     </ion-item>
     <ion-item>
-      <ion-label color="primary">Votre nom</ion-label>
-      <ion-input ng-model="this.global.profile_name"></ion-input>
+      <ion-label color="primary">Votre age</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="this.res_age"></ion-datetime>
    </ion-item>
   </ion-list>
   <div text-center>

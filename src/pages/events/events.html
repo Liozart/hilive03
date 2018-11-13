@@ -7,7 +7,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end>
-      <button ion-button icon-only round color="orange">
+      <button ion-button icon-only round color="orange" (click)="openFilters()">
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
@@ -17,10 +17,11 @@
   <div *ngFor="let event of res_events">
     <ion-card>
       <ion-card-content>
+        <h2>- {{event.category}} -</h2>
         <ion-card-title class="eventTitle">
-          {{event.title}}
+          {{event.event.title}}
         </ion-card-title>
-        <div [innerHTML]="event.content" class="eventContent">
+        <div [innerHTML]="event.event.content" class="eventContent">
         </div>
       </ion-card-content>
     </ion-card>

@@ -20,7 +20,7 @@ import * as mapboxgl from 'mapbox-gl';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages: Array<{title: string, component: any}>;
-  rootPage:any = HomePage;
+  rootPage:any = ShopsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
               private http: HttpClient,
@@ -34,6 +34,31 @@ export class MyApp {
       });
       this.http.get(this.global.url_getSales, {}).subscribe(data => {
         this.global.storage_sales = data;
+      });
+      this.http.get(this.global.url_getCityEvents, {}).subscribe(data => {
+        this.global.storage_cityEvents = data;
+        this.global.storage_cityEvents = this.global.storage_cityEvents.items;
+
+        var i = 0;
+        var cats = [];
+
+        /* Extract category */
+        for (var ev of this.global.storage_cityEvents) {
+          var d = ev.title.split(":", 2);
+          ev.title = d[1];
+          cats.push(d[0].split("-", 2)[1].trim());
+        }
+
+        /* Merge arrays for display */
+        var merged = [];
+        for (var ev2 of this.global.storage_cityEvents){
+          merged.push({
+            event : ev2,
+            category : cats[i]
+          });
+          i++;
+        }
+        this.global.storage_cityEvents = merged;
       });
 
       statusBar.styleDefault();

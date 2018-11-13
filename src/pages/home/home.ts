@@ -8,7 +8,7 @@ import {ShopsPage} from "../shops/shops";
 import {FilePath} from "@ionic-native/file-path";
 import { File } from '@ionic-native/file';
 import {Camera} from "@ionic-native/camera";
-import {Platform} from "ionic-angular";
+//import {Platform} from "ionic-angular";
 
 
 @Component({
@@ -29,7 +29,7 @@ export class HomePage implements OnInit{
               public menuCtrl: MenuController,
               private datePicker: DatePicker,
               private file: File, private filePath: FilePath,
-              private camera: Camera, public platform: Platform) {
+              private camera: Camera, /*public platform: Platform*/) {
     //app._setDisableScroll(true);
   }
 
@@ -113,17 +113,25 @@ export class HomePage implements OnInit{
   }
 
   showAgePrompt() {
-    this.datePicker.show({
-      date: new Date(),
-      mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
-    }).then(
-      date => {
-        this.global.profile_ageDate = date;
-        this.showImagePrompt();
-      },
-      err => console.log('Error occurred while getting date: ', err)
-    );
+    const prompt = this.alertCtrl.create({
+      title: 'Première connexion',
+      message: "Entrez votre date de naissance.",
+      inputs: [ {
+        name: 'age',
+        placeholder: 'Date',
+        type: 'date'
+      }
+      ],
+      buttons: [ {
+        text: 'Suivant',
+        handler: data => {
+          this.global.profile_ageDate = data.age;
+          this.showImagePrompt();
+        }
+      }
+      ]
+    });
+    prompt.present();
   }
 
   showImagePrompt() {
@@ -135,13 +143,20 @@ export class HomePage implements OnInit{
           text: 'Oui',
           handler: data => {
             /* get image */
-            this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
+            /*this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);*/
           }
         },
         {
           text: 'Plus tard',
           handler: data => {
-            this.navCtrl.setRoot(ShopsPage);
+            /* Update profiles infos */
+            this.http.post(this.global.url_updateProfile, {}, {
+              headers: new HttpHeaders({
+                token: this.global.token
+              })
+            }).subscribe(data => {
+                this.navCtrl.setRoot(ShopsPage);
+            });
           }
         }
       ]
@@ -149,7 +164,7 @@ export class HomePage implements OnInit{
     prompt.present();
   }
 
-  takePicture(sourceType) {
+  /*takePicture(sourceType) {
     // Create options for the Camera Dialog
     var options = {
       quality: 100,
@@ -179,7 +194,7 @@ export class HomePage implements OnInit{
   }
 
   private createFileName() {
-    newFileName =  "profile_" + this.email + ".jpg";
+    var newFileName =  "profile_" + this.email + ".jpg";
     return newFileName;
   }
 
@@ -199,7 +214,7 @@ export class HomePage implements OnInit{
     } else {
       return cordova.file.dataDirectory + img;
     }
-  }
+  }*/
 
   showAlert(title: string, msg: string, btn: string) {
     const alert = this.alertCtrl.create({

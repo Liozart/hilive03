@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {App, NavController, NavParams, ToastController} from 'ionic-angular';
 import { GlobalService } from "../../services/GlobalService";
+import {Geolocation} from "@ionic-native/geolocation";
 import * as mapboxgl from 'mapbox-gl';
 
 
@@ -68,7 +69,7 @@ export class MapPage implements OnInit {
     }
 
     /* Insert user position */
-    let watch = this.geolocation.watchPosition();
+    /*let watch = this.geolocation.watchPosition();
     watch.subscribe((data) => {
       // data can be a set of coordinates, or an error (if an error occurred).
       // data.coords.latitude
@@ -77,6 +78,6 @@ export class MapPage implements OnInit {
       var marker = new mapboxgl.Marker()
         .setLngLat(co)
         .addTo(this.map);
-    });
+    });*/
   }
 }
