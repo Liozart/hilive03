@@ -15,6 +15,7 @@ import {EventsPage} from "../pages/events/events";
 import {ShopsPage} from "../pages/shops/shops";
 import {ProfilePage} from "../pages/profile/profile";
 import {DatePicker} from "@ionic-native/date-picker";
+import { File } from "@ionic-native/file";
 import {FilePath} from "@ionic-native/file-path";
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
@@ -56,6 +57,7 @@ import {File} from "@ionic-native/file";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GlobalService,
     DatePicker,
+    File,
     FilePath,
     Geolocation,
     Camera,

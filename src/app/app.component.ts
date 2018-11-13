@@ -20,7 +20,7 @@ import * as mapboxgl from 'mapbox-gl';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages: Array<{title: string, component: any}>;
-  rootPage:any = ShopsPage;
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
               private http: HttpClient,

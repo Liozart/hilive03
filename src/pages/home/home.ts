@@ -8,7 +8,6 @@ import {ShopsPage} from "../shops/shops";
 import {FilePath} from "@ionic-native/file-path";
 import { File } from '@ionic-native/file';
 import {Camera} from "@ionic-native/camera";
-//import {Platform} from "ionic-angular";
 
 
 @Component({
@@ -29,8 +28,8 @@ export class HomePage implements OnInit{
               public menuCtrl: MenuController,
               private datePicker: DatePicker,
               private file: File, private filePath: FilePath,
-              private camera: Camera, /*public platform: Platform*/) {
-    //app._setDisableScroll(true);
+              private camera: Camera, public platform: Platform) {
+    this.menuCtrl.enable(false, 'mainMenu')
   }
 
   ngOnInit() {
@@ -75,6 +74,7 @@ export class HomePage implements OnInit{
             if (JSON.stringify(data).includes("erreur"))
               this.showAlert("Erreur", JSON.stringify(data), "OK");
             else {
+              //Get at least the name and the age of the new user
               this.getFirstProfileInfosProcedure();
             }
           });
@@ -143,7 +143,7 @@ export class HomePage implements OnInit{
           text: 'Oui',
           handler: data => {
             /* get image */
-            /*this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);*/
+            this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
           }
         },
         {
@@ -164,7 +164,7 @@ export class HomePage implements OnInit{
     prompt.present();
   }
 
-  /*takePicture(sourceType) {
+  takePicture(sourceType) {
     // Create options for the Camera Dialog
     var options = {
       quality: 100,
@@ -194,7 +194,7 @@ export class HomePage implements OnInit{
   }
 
   private createFileName() {
-    var newFileName =  "profile_" + this.email + ".jpg";
+    newFileName =  "profile_" + this.email + ".jpg";
     return newFileName;
   }
 
@@ -206,15 +206,6 @@ export class HomePage implements OnInit{
       this.showAlert("Erreur", "Erreur lors du stockage de l'image", "OK");
     });
   }
-
-// Always get the accurate path to your apps folder
-  public pathForImage(img) {
-    if (img === null) {
-      return '';
-    } else {
-      return cordova.file.dataDirectory + img;
-    }
-  }*/
 
   showAlert(title: string, msg: string, btn: string) {
     const alert = this.alertCtrl.create({

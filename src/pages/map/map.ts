@@ -3,6 +3,7 @@ import {App, NavController, NavParams, ToastController} from 'ionic-angular';
 import { GlobalService } from "../../services/GlobalService";
 import {Geolocation} from "@ionic-native/geolocation";
 import * as mapboxgl from 'mapbox-gl';
+import { Geolocation } from "@ionic-native/geolocation";
 
 
 @Component({
@@ -23,7 +24,7 @@ export class MapPage implements OnInit {
     [6.152065, 46.207324]];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, app: App,
-              public global: GlobalService, public geolocation: Geolocation) {
+              public global: GlobalService, /*public geolocation: Geolocation*/) {
     app._setDisableScroll(true);
   }
 
