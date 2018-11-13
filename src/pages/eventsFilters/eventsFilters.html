@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="violet">
+    <button ion-button icon-only clear color="orange" (click)="clickOnBackButton()">
+      <ion-icon name="arrow-left"></ion-icon>
+      Back
+    </button>
+    <ion-title>
+      <span style="color: #f4f4f4;">Filtres</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header>Catégories</ion-list-header>
+    <ion-item-group reorder="true" (ionItemReorder)="reorderItems($event)">
+      <ion-item *ngFor="let item of cityEvents_categories">{{ item }}</ion-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

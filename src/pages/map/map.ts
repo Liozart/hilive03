@@ -3,8 +3,6 @@ import {App, NavController, NavParams, ToastController} from 'ionic-angular';
 import { GlobalService } from "../../services/GlobalService";
 import {Geolocation} from "@ionic-native/geolocation";
 import * as mapboxgl from 'mapbox-gl';
-import { Geolocation } from "@ionic-native/geolocation";
-
 
 @Component({
   selector: 'page-map',

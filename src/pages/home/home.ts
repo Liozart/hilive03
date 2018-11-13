@@ -143,7 +143,7 @@ export class HomePage implements OnInit{
           text: 'Oui',
           handler: data => {
             /* get image */
-            this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
+           //this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
           }
         },
         {
@@ -154,7 +154,7 @@ export class HomePage implements OnInit{
               headers: new HttpHeaders({
                 token: this.global.token
               })
-            }).subscribe(data => {
+            }).subscribe(datasub => {
                 this.navCtrl.setRoot(ShopsPage);
             });
           }
@@ -164,7 +164,7 @@ export class HomePage implements OnInit{
     prompt.present();
   }
 
-  takePicture(sourceType) {
+  /*takePicture(sourceType) {
     // Create options for the Camera Dialog
     var options = {
       quality: 100,
@@ -206,6 +206,7 @@ export class HomePage implements OnInit{
       this.showAlert("Erreur", "Erreur lors du stockage de l'image", "OK");
     });
   }
+  */
 
   showAlert(title: string, msg: string, btn: string) {
     const alert = this.alertCtrl.create({

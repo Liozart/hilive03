@@ -20,7 +20,7 @@ import * as mapboxgl from 'mapbox-gl';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   pages: Array<{title: string, component: any}>;
-  rootPage:any = HomePage;
+  rootPage:any = EventsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
               private http: HttpClient,
@@ -29,37 +29,9 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
 
-      this.http.get(this.global.url_getShops, {}).subscribe(data => {
-        this.global.storage_shops = data;
-      });
-      this.http.get(this.global.url_getSales, {}).subscribe(data => {
-        this.global.storage_sales = data;
-      });
-      this.http.get(this.global.url_getCityEvents, {}).subscribe(data => {
-        this.global.storage_cityEvents = data;
-        this.global.storage_cityEvents = this.global.storage_cityEvents.items;
-
-        var i = 0;
-        var cats = [];
-
-        /* Extract category */
-        for (var ev of this.global.storage_cityEvents) {
-          var d = ev.title.split(":", 2);
-          ev.title = d[1];
-          cats.push(d[0].split("-", 2)[1].trim());
-        }
-
-        /* Merge arrays for display */
-        var merged = [];
-        for (var ev2 of this.global.storage_cityEvents){
-          merged.push({
-            event : ev2,
-            category : cats[i]
-          });
-          i++;
-        }
-        this.global.storage_cityEvents = merged;
-      });
+      this.global.loadSales(http);
+      this.global.loadShops(http);
+      this.global.loadCityEvents(http);
 
       statusBar.styleDefault();
       splashScreen.hide();

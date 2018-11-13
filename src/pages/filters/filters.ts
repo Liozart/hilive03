@@ -17,11 +17,11 @@ export class FiltersPage implements OnInit{
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public global: GlobalService, private toastCtrl: ToastController,
               public menuCtrl: MenuController) {
-    this.menuCtrl.enable(true);
+    this.menuCtrl.enable(false, "mainMenu");
   }
 
   ngOnInit(){
-    this.filterMaxDistance = this.global.filter_maxDistance;
+    this.filterMaxDistance = this.global.filter_sales_maxDistance;
   }
 
   changeFilterCategory(cat: string, add: boolean) {
@@ -32,12 +32,12 @@ export class FiltersPage implements OnInit{
   }
 
   changeFilterPrice(nb: number){
-    this.global.filter_maxPrice = nb;
+    this.global.filter_sales_maxPrice = nb;
     this.filterMaxPrice = nb;
   }
 
   changeFilterDistance(km: number){
-    this.global.filter_maxDistance = km;
+    this.global.filter_sales_maxDistance = km;
     this.filterMaxDistance = km;
   }
 

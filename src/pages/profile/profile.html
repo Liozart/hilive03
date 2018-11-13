@@ -6,6 +6,11 @@
     <button ion-button icon-only round color="orange" menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-buttons end>
+      <button ion-button icon-only round color="orange">
+        <ion-icon name="brush"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content class="content">
@@ -20,6 +25,10 @@
     <ion-item>
       <ion-label color="primary">Votre age</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="this.res_age"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Vos centres d'intêret:</ion-label>
+
    </ion-item>
   </ion-list>
   <div text-center>

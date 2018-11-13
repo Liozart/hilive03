@@ -4,23 +4,23 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule} from "@angular/common/http";
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { SalesPage } from "../pages/sales/sales";
-import { FiltersPage } from "../pages/filters/filters";
-import {GlobalService} from "../services/GlobalService";
-import {ShopShowcase} from "../pages/shopShowcase/shopShowcase";
-import {MapPage} from "../pages/map/map";
-import {EventsPage} from "../pages/events/events";
-import {ShopsPage} from "../pages/shops/shops";
-import {ProfilePage} from "../pages/profile/profile";
 import {DatePicker} from "@ionic-native/date-picker";
 import { File } from "@ionic-native/file";
 import {FilePath} from "@ionic-native/file-path";
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
-import {File} from "@ionic-native/file";
 
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { SalesPage } from "../pages/sales/sales";
+import { FiltersPage } from "../pages/filters/filters";
+import {ShopShowcase} from "../pages/shopShowcase/shopShowcase";
+import {MapPage} from "../pages/map/map";
+import {EventsPage} from "../pages/events/events";
+import {ShopsPage} from "../pages/shops/shops";
+import {ProfilePage} from "../pages/profile/profile";
+import { EventsFiltersPage } from "../pages/eventsFilters/eventsFilters";
+import {GlobalService} from "../services/GlobalService";
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import {File} from "@ionic-native/file";
     MapPage,
     EventsPage,
     ShopsPage,
-    ProfilePage
+    ProfilePage,
+    EventsFiltersPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +50,8 @@ import {File} from "@ionic-native/file";
     MapPage,
     EventsPage,
     ShopsPage,
-    ProfilePage
+    ProfilePage,
+    EventsFiltersPage
   ],
   providers: [
     StatusBar,
@@ -60,8 +62,7 @@ import {File} from "@ionic-native/file";
     File,
     FilePath,
     Geolocation,
-    Camera,
-    File
+    Camera
   ]
 })
 export class AppModule {}

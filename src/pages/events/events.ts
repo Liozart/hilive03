@@ -3,6 +3,7 @@ import {MenuController, NavController, NavParams, ToastController} from 'ionic-a
 import { GlobalService } from "../../services/GlobalService";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
+import {EventsFiltersPage} from "../eventsFilters/eventsFilters";
 
 @Component({
   selector: 'page-events',
@@ -18,6 +19,7 @@ export class EventsPage implements OnInit {
               public global: GlobalService,
               public menuCtrl: MenuController,
               public http: HttpClient) {
+    this.menuCtrl.enable(true, "mainMenu");
   }
 
   ngOnInit() {
@@ -25,6 +27,6 @@ export class EventsPage implements OnInit {
   }
 
   openFilters(){
-
+    this.navCtrl.setRoot(EventsFiltersPage);
   }
 }
